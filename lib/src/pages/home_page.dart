@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todo_list/src/widget/card_tarefa.dart';
+
+import 'add_tarefa.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -27,8 +30,26 @@ class _HomePageState extends State<HomePage> {
           )
         ),
       ),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(20),
+            child: CardTarefa(
+              titulo: "Fazer café",
+              descricao: "Sem açucar pq o gugu não gosta",
+              onActionFinalizado: (){  },
+              onActionDelete: () {  },
+              color: Colors.teal,
+            ),
+          ),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(
+            builder: (context) => AddTarefa()
+          ));
+        },
         child: Container(
           height: double.maxFinite,
           width: double.maxFinite,
